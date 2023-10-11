@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="750.0" prefWidth="850.0" styleClass="main_container" stylesheets="@../../styles/Storekeeper/ActionAvailability.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="trade_company.controllers.storekeeper.OrdersAddReleaseController">
+    <TabPane prefHeight="750.0" prefWidth="850.0" styleClass="tab_pane" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <Tab fx:id="tab_addProduct" text="Поступление ТМЦ">
+            <graphic>
+                <FontAwesomeIconView id="green-darker-stroke" glyphName="PLUS" size="30.0" />
+            </graphic>
+            <fx:include source="Tabs/AddAvail.fxml" />
+        </Tab>
+        <Tab fx:id="tab_releaseProduct" text="Отпуск товара">
+            <graphic>
+                <FontAwesomeIconView id="orange-darker-stroke" glyphName="LEVEL_UP" size="30.0" />
+            </graphic>
+            <fx:include source="Tabs/ReleaseAvail.fxml" />
+        </Tab>
+    </TabPane>
+</AnchorPane>

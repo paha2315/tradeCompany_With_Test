@@ -1,0 +1,6 @@
+"ID_Person";"ID_Post";"ID_Supplier";"FirstName";"SecondName";"ThirdName";"Login";"Password"
+1;3;0;"Администратор";"Главный";"";"admin";"8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918"
+2;2;0;"Всеволод";"Петров";"Дмитриевич";"petrov123";"a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3"
+3;1;0;"Николай";"Комаров";"Григорьевич";"komarov234";"114bd151f8fb0c58642d2170da4ae7d7c57977260ac2cc8905306cab6b2acabc"
+4;2;0;"Sergay";"Smirnov";"";"smirnov321";"8d23cf6c86e834a7aa6eded54c26ce2bb2e74903538c61bdd5d2197997ab2f72"
+5;1;1;"Александр";"Пушкин";"Сергеевич";"pushkin111";"f6e0a1e2ac41945a9aa7ff8a8aaa0cebc12a3bcc981a929ad5cf810a090e11ae"

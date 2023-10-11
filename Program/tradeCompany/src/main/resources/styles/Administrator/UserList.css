@@ -1,0 +1,46 @@
+* {
+	-color-default: #442C17;
+}
+
+
+/* Controls */
+
+.main_container VBox {
+	-fx-spacing: 5;
+}
+
+.label {
+	-fx-font-size: 1.1em;
+}
+
+.text-field {
+	-fx-background-color: derive(-color-default, 140%);
+	-fx-text-fill: -color-default;
+	-fx-prompt-text-fill: derive(-color-default, 80%);
+	
+	-fx-border-color: derive(-color-default, 100%);
+	-fx-border-radius: 2 2 2 2;
+}
+
+
+
+.table-view {
+	-fx-border-color: derive(-color-default, 100%);
+}
+
+.table-view .placeholder {
+	-fx-border-insets: -1 -2 -2 -2;
+	-fx-border-color: derive(-color-default, 100%);
+}
+
+.table-view .column-header {
+    -fx-background-color: linear-gradient(derive(-color-default, 140%) 0%, derive(-color-default, 120%) 100%);
+	-fx-border-color: derive(-color-default, 100%);
+	-fx-border-insets: 0 -1 0 0;
+}
+
+.table-view .filler {
+    -fx-background-color: linear-gradient(derive(-color-default, 140%) 0%, derive(-color-default, 120%) 100%);
+	-fx-border-color: derive(-color-default, 100%);
+}
+

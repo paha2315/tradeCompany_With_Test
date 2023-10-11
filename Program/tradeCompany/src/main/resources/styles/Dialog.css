@@ -1,0 +1,69 @@
+* {
+	-color-default: #442C17;
+	-green: #96B707;
+	-red: #F97A1D;
+}
+
+
+.main_container {
+	
+}
+
+.main_container VBox {
+	-fx-spacing: 16;
+}
+
+.main_container VBox HBox {
+	-fx-spacing: 24;
+}
+
+
+
+/* Buttons */
+
+.button {
+	-fx-font-size: 1.1em;
+	-fx-pref-width: 100;
+	-fx-pref-height: 40;
+}
+
+.button_right {
+    -fx-background-radius: 8 3 8 3;
+	-fx-border-radius: 8 3 8 3;
+	-fx-border-color: derive(-green, 30%);
+	-fx-background-color: linear-gradient(derive(-green, 80%) 0%, derive(-green, 40%) 100%);
+	-fx-text-fill: derive(-green, -50%);
+}
+
+.button_right:hover {
+	-fx-cursor: hand;
+}
+
+.button_left {
+    -fx-background-radius: 3 8 3 8;
+	-fx-border-radius: 3 8 3 8;
+	-fx-border-color: derive(-red, 30%);
+	-fx-background-color: linear-gradient(derive(-red, 80%) 0%, derive(-red, 40%) 100%);
+	-fx-text-fill: derive(-red, -50%);
+}
+
+.button_left:hover {
+	-fx-cursor: hand;
+}
+
+
+/* Labels */
+
+.label {
+	-fx-font-size: 1.1em;
+}
+
+
+/* Product Name */
+
+.product_name {
+	-fx-font-size: 1.2em;
+}
+
+
+

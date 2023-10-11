@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="750.0" prefWidth="850.0" styleClass="main_container" stylesheets="@../../styles/Storekeeper/Tabs/AddProduct.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="trade_company.controllers.storekeeper.ReportsController">
+   <VBox AnchorPane.leftAnchor="32.0" AnchorPane.topAnchor="48.0">
+      <children>
+          <ComboBox fx:id="combobox_diagramSelector" prefHeight="25.0" prefWidth="200.0" />
+         <VBox>
+            <children>
+               <Label alignment="TOP_LEFT" text="Начало периода" />
+               <DatePicker fx:id="datepicker_start" prefWidth="150.0" />
+            </children>
+         </VBox>
+         <VBox>
+            <children>
+               <Label alignment="TOP_LEFT" text="Конец периода" />
+               <DatePicker fx:id="datepicker_end" prefWidth="150.0" />
+            </children>
+         </VBox>
+      </children>
+   </VBox>
+    <StackPane prefHeight="150.0" prefWidth="200.0" AnchorPane.bottomAnchor="64.0" AnchorPane.leftAnchor="192.0" AnchorPane.rightAnchor="32.0" AnchorPane.topAnchor="128.0">
+        <BarChart fx:id="barchart" animated="false">
+            <xAxis>
+                <CategoryAxis side="BOTTOM" />
+            </xAxis>
+            <yAxis>
+                <NumberAxis side="LEFT" />
+            </yAxis>
+        </BarChart>
+        <PieChart fx:id="piechart" animated="false" />
+    </StackPane>
+    <TextField id="title-text" alignment="CENTER" editable="false" layoutX="129.0" layoutY="30.0" text="ДИАГРАММЫ" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="0.0" />
+   <Text fx:id="text_money" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="600.0" AnchorPane.bottomAnchor="16.0" AnchorPane.rightAnchor="16.0" />
+   <Button fx:id="button_makeMH20" layoutX="32.0" layoutY="202.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Отчёт по форме МХ-20" />
+</AnchorPane>

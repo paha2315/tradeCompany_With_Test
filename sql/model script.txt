@@ -1,0 +1,89 @@
+-- MySQL Workbench Forward Engineering
+
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
+
+-- -----------------------------------------------------
+-- Schema course_work
+-- -----------------------------------------------------
+
+-- -----------------------------------------------------
+-- Schema course_work
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `course_work` DEFAULT CHARACTER SET cp1251 ;
+USE `course_work` ;
+
+-- -----------------------------------------------------
+-- Table `course_work`.`product`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `course_work`.`product` (
+  `ID_Product` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `Name` VARCHAR(128) NOT NULL,
+  `Description` VARCHAR(512) NULL DEFAULT NULL,
+  PRIMARY KEY (`ID_Product`),
+  UNIQUE INDEX `ID_Product_UNIQUE` (`ID_Product` ASC) VISIBLE)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = cp1251;
+
+
+-- -----------------------------------------------------
+-- Table `course_work`.`warehouses`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `course_work`.`warehouses` (
+  `ID_Warehouse` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `Name` VARCHAR(128) NOT NULL,
+  `City` VARCHAR(64) NOT NULL,
+  `Street` VARCHAR(64) NOT NULL,
+  `BuildingNumber` INT UNSIGNED NOT NULL,
+  `BuildingLiteral` CHAR(1) NULL DEFAULT NULL,
+  PRIMARY KEY (`ID_Warehouse`),
+  UNIQUE INDEX `ID_Warehouse_UNIQUE` (`ID_Warehouse` ASC) VISIBLE)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = cp1251;
+
+
+-- -----------------------------------------------------
+-- Table `course_work`.`product_in_warehouses`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `course_work`.`product_in_warehouses` (
+  `ID_ProductInWarehouses` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `ID_Product` INT UNSIGNED NOT NULL,
+  `ID_Warehouse` INT UNSIGNED NOT NULL,
+  `Capacity` INT UNSIGNED NULL DEFAULT NULL,
+  `Stored` INT UNSIGNED NULL DEFAULT NULL,
+  PRIMARY KEY (`ID_ProductInWarehouses`),
+  UNIQUE INDEX `ID_ProductInWarehouses_UNIQUE` (`ID_ProductInWarehouses` ASC) VISIBLE,
+  INDEX `ID_ProductPIW_idx` (`ID_Product` ASC) VISIBLE,
+  INDEX `ID_WarehousePIW_idx` (`ID_Warehouse` ASC) VISIBLE,
+  CONSTRAINT `ID_ProductPIW`
+    FOREIGN KEY (`ID_Product`)
+    REFERENCES `course_work`.`product` (`ID_Product`),
+  CONSTRAINT `ID_WarehousePIW`
+    FOREIGN KEY (`ID_Warehouse`)
+    REFERENCES `course_work`.`warehouses` (`ID_Warehouse`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = cp1251;
+
+
+-- -----------------------------------------------------
+-- Table `course_work`.`suppliers`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `course_work`.`suppliers` (
+  `ID_Supplier` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `ID_Product` INT UNSIGNED NOT NULL,
+  `Name` VARCHAR(128) NOT NULL,
+  `City` VARCHAR(64) NOT NULL,
+  PRIMARY KEY (`ID_Supplier`),
+  UNIQUE INDEX `ID_Supplier_UNIQUE` (`ID_Supplier` ASC) VISIBLE,
+  INDEX `ID_Product_idx` (`ID_Product` ASC) VISIBLE,
+  CONSTRAINT `ID_ProductS`
+    FOREIGN KEY (`ID_Product`)
+    REFERENCES `course_work`.`product` (`ID_Product`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = cp1251;
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;

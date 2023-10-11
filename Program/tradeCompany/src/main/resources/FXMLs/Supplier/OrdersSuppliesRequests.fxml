@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="750.0" prefWidth="850.0" stylesheets="@../../styles/Storekeeper/ActionAvailability.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="trade_company.controllers.supplier.OrdersSuppliesRequestsController">
+   <children>
+      <TabPane layoutX="69.0" layoutY="72.0" prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <tabs>
+          <Tab text="Предложить свой товар">
+               <graphic>
+                  <FontAwesomeIconView id="orange-darker-stroke" glyphName="LEVEL_UP" size="20.0" />
+               </graphic>
+               <content>
+                  <fx:include source="Tabs/Supplies.fxml" />
+               </content>
+          </Tab>
+            <Tab text="Запросы поставок">
+               <graphic>
+                  <FontAwesomeIconView id="orange-darker-stroke" glyphName="LEVEL_UP" size="20.0" />
+               </graphic>
+               <content>
+                  <fx:include source="Tabs/Requests.fxml" />
+               </content>
+            </Tab>
+          <Tab text="Заказать товары">
+               <graphic>
+                  <FontAwesomeIconView id="green-darker-stroke" glyphName="LEVEL_DOWN" size="20.0" />
+               </graphic>
+               <content>
+                  <fx:include source="Tabs/Orders.fxml" />
+               </content>
+          </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>

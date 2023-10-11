@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" styleClass="main_container" stylesheets="@../../styles/Profile.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="trade_company.controllers.storekeeper.ProfileController">
+   <VBox AnchorPane.leftAnchor="32.0" AnchorPane.topAnchor="16.0">
+      <HBox>
+         <Label text="Здравствуйте, " />
+         <Text fx:id="text_userName" strokeType="OUTSIDE" strokeWidth="0.0" text="Ваше ФИО!" />
+      </HBox>
+      <HBox>
+         <Label text="Вы заступили на смену на склад: " />
+         <Text fx:id="text_warehouseName" strokeType="OUTSIDE" strokeWidth="0.0" text="Наименование склада" />
+      </HBox>
+   </VBox>
+   <HBox AnchorPane.rightAnchor="32.0" AnchorPane.topAnchor="16.0">
+      <Label text="Ваша должность: " />
+      <Text fx:id="text_userPost" strokeType="OUTSIDE" strokeWidth="0.0" text="Наименование" />
+   </HBox>
+   <VBox AnchorPane.leftAnchor="32.0" AnchorPane.topAnchor="96.0">
+      <Label text="Изменение пароля" />
+      <Label text="текущий пароль">
+         <graphic>
+            <PasswordField fx:id="passwordfield_current" />
+         </graphic>
+      </Label>
+      <Label text="новый пароль">
+         <graphic>
+            <PasswordField fx:id="passwordfield_new" />
+         </graphic>
+      </Label>
+      <Label text="повторите пароль">
+         <graphic>
+            <PasswordField fx:id="passwordfield_repeat" />
+         </graphic>
+      </Label>
+      <Button fx:id="button_changePassword" mnemonicParsing="false" text="Изменить пароль" />
+   </VBox>
+</AnchorPane>

@@ -1,0 +1,123 @@
+* {
+	-color-default: #442C17;
+}
+
+
+/* Title */
+
+#title-text {
+	-fx-font-size: 2em;
+	-fx-font-family: "Calibry Light";
+	-fx-alignment: center;
+	-fx-background-color: transparent;
+	-fx-text-fill: -color-default;
+	-fx-border-color: transparent;
+}
+
+/* Controls */
+
+.main_container VBox {
+	-fx-spacing: 5;
+}
+
+.main_container VBox HBox {
+	-fx-spacing: 16;
+}
+
+.hbox_seek_article {
+	-fx-spacing: 8;
+}
+
+
+.FontAwesomeIconView {
+	-fx-fill: -color-default;
+}
+
+.label {
+	-fx-font-size: 1.1em;
+}
+
+.text {
+	-fx-font-size: 1.1em;
+}
+
+
+.button {
+    -fx-background-radius: 3 3 3 3;
+	-fx-border-radius: 3 3 3 3;
+	-fx-border-color: derive(-color-default, 100%);
+	-fx-background-color: linear-gradient(derive(-color-default, 160%) 0%, derive(-color-default, 120%) 100%);
+	-fx-text-fill: derive(-color-default, -50%);
+}
+
+.button:hover {
+	-fx-cursor: hand;
+}
+
+
+
+.combo-box .text-input {
+	-fx-background-color: derive(-color-default, 140%);
+	-fx-text-fill: -color-default;
+	-fx-prompt-text-fill: derive(-color-default, 80%);
+	-fx-border-radius: 2 0 0 2;
+}
+
+.combo-box .arrow-button {
+	-fx-border-insets: 0 0 0 -1;
+	-fx-border-color: derive(-color-default, 100%);
+	-fx-border-radius: 0 2 2 0;
+	-fx-background-color: linear-gradient(derive(-color-default, 140%) 0%, derive(-color-default, 120%) 100%);
+}
+
+.combo-box .arrow-button:hover {
+	-fx-cursor: hand;
+}
+
+.combo-box .list-cell {
+	-fx-background-color: derive(-color-default, 140%);
+	-fx-border-color: derive(-color-default, 100%);
+	-fx-border-radius: 2 2 2 2;
+}
+
+.combo-box-popup .list-view .list-cell { 
+	-fx-text-fill: -color-default; 
+}
+
+.combo-box-popup .list-view .list-cell:selected {
+	-fx-text-fill: black;
+	-fx-font-weight: bold;
+}
+
+.combo-box-popup .list-view .list-cell:hover {
+	-fx-cursor: hand;
+	-fx-text-fill: -color-default;
+	-fx-font-weight: bold;
+}
+
+.text-field {
+	-fx-background-color: derive(-color-default, 140%);
+	-fx-text-fill: -color-default;
+	-fx-prompt-text-fill: derive(-color-default, 80%);
+	
+	-fx-border-color: derive(-color-default, 100%);
+	-fx-border-radius: 2 2 2 2;
+}
+
+.text-area {
+	-fx-text-fill: -color-default;
+	-fx-prompt-text-fill: derive(-color-default, 80%);
+	
+	-fx-border-color: derive(-color-default, 100%);
+	-fx-border-radius: 2 2 2 2;
+}
+
+.text-area .scroll-pane {
+	-fx-background-color: derive(-color-default, 140%);
+}
+
+
+.grid-pane {
+	-fx-vgap: 3;
+}
+
