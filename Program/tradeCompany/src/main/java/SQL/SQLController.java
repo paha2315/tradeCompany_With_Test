@@ -26,7 +26,7 @@ public class SQLController {
         load(filename);
     }
 
-    SQLController() throws IOException {
+    public SQLController() throws IOException {
         load(Objects.requireNonNull(SSQLController.class.getResource(".DB")));
     }
 
