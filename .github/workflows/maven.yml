@@ -69,6 +69,6 @@ jobs:
       run: mvn -B package --file Program/tradeCompany/pom.xml
 
   
-    - name: Test
-      run: |
-            your tests
+    # - name: Test
+    #   run: |
+    #         your tests
