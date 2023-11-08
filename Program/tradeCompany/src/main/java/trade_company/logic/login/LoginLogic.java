@@ -39,7 +39,7 @@ public class LoginLogic {
             warehouseNames.add(warehouse.getName());
     }
 
-    protected boolean personIsAuthorized(String post, String login, String password) throws SQLException, NoSuchAlgorithmException {
+    public boolean personIsAuthorized(String post, String login, String password) throws SQLException, NoSuchAlgorithmException {
         String hashPassword = Hasher.createSHAHash(password);
 
         ResultSet result = SSQLController.Query("SELECT ID_Person, Login, Password, ID_Post FROM person");
