@@ -43,6 +43,9 @@ jobs:
         mysql root password: '12345'
         mysql user: 'root'
         mysql password: '12345'
+    - name: Run sample.sql
+      run: |
+          mysql --protocol=tcp -h localhost -P 3306 -uroot -ppassword -e "$(cat $(find ./ -name init.sql))"
 
     - name: Build with Maven
       run: mvn -B package --file Program/tradeCompany/pom.xml
