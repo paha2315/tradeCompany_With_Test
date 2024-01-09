@@ -16,22 +16,19 @@ import static java.lang.Math.floor;
 import static java.lang.Math.min;
 
 public class reportClass {
+    static final String DEFAULT_PATH = "user.dir";
+    private static String lastPath = "user.dir";
     final int okpo_code = 777;
     final int okdp_code = 1203012;
     final String Organisation_name = "ООО «Торговая фирма»";
-
-    private static final String DEFAULT_PATH = "user.dir";
-    private static String lastPath = "user.dir";
 
     public static String requestSaveFolderFromUser(String formName) {
         DirectoryChooser directoryChooser = new DirectoryChooser();
         directoryChooser.setTitle("Выберите папку для сохранения формы " + formName);
 
         File initialDirectory;
-        if (lastPath.equals(DEFAULT_PATH))
-            initialDirectory = new File(System.getProperty("user.dir"));
-        else
-            initialDirectory = new File(lastPath);
+        if (lastPath.equals(DEFAULT_PATH)) initialDirectory = new File(System.getProperty("user.dir"));
+        else initialDirectory = new File(lastPath);
 
         directoryChooser.setInitialDirectory(initialDirectory);
 

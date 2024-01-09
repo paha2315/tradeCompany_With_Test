@@ -20,17 +20,15 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.*;
 
-import static java.lang.Math.min;
 import static trade_company.report.reportClass.requestSaveFolderFromUser;
 
 
 public class ReleaseLogic {
+    protected final String ALL_CLIENTS = "Все заказчики";
     protected ObservableList<StorekeeperIncompleteOrder> incompleteOrdersData;
     protected ObservableList<Availability> toReleaseAvailabilityData;
     protected ArrayList<Order> toReleaseOrderData;
     protected ArrayList<String> comboboxClientsNamesData;
-
-    protected final String ALL_CLIENTS = "Все заказчики";
 
     public ReleaseLogic() {
         incompleteOrdersData = FXCollections.observableArrayList();
@@ -47,7 +45,7 @@ public class ReleaseLogic {
         comboboxClientsNamesData.add(ALL_CLIENTS);
         try {
             ResultSet result = SSQLController.Query("SELECT DISTINCT s.Name FROM supplier s"
-                    + " JOIN orders o ON o.ID_Supplier=s.ID_Supplier;");
+                                                    + " JOIN orders o ON o.ID_Supplier=s.ID_Supplier;");
             while (result.next())
                 comboboxClientsNamesData.add(result.getString("Name"));
             result.close();
@@ -66,7 +64,7 @@ public class ReleaseLogic {
             double count = 0;
             try {
                 resultSet = SSQLController.Query("SELECT sum(Count) as SUMM FROM availability\n" +
-                        "WHERE (ID_Warehouse=" + wh_id + " AND ID_Product=" + Math.round(item.getPrice()) + ")");
+                                                 "WHERE (ID_Warehouse=" + wh_id + " AND ID_Product=" + Math.round(item.getPrice()) + ")");
                 if (resultSet.next())
                     count = resultSet.getDouble("SUMM");
             } catch (SQLException e) {
@@ -168,10 +166,10 @@ public class ReleaseLogic {
 
         String filterByClientName = name.equals(ALL_CLIENTS) ? "" : " AND s.Name='" + name + "'";
         return "SELECT * FROM orders o"
-                + " JOIN product p ON (" + filterBySelectedOrders + " p.ID_Product = o.Price)"
-                + " JOIN supplier s ON (o.ID_Supplier = s.ID_Supplier" + filterByClientName + ")"
-                + " WHERE p.Article like '%" + filter + "%' AND o.ID_Document is Null AND Completed=2"
-                + " AND ID_Warehouse=" + UserDataModel.getInstance().getWarehouse().getId() + ";";
+               + " JOIN product p ON (" + filterBySelectedOrders + " p.ID_Product = o.Price)"
+               + " JOIN supplier s ON (o.ID_Supplier = s.ID_Supplier" + filterByClientName + ")"
+               + " WHERE p.Article like '%" + filter + "%' AND o.ID_Document is Null AND Completed=2"
+               + " AND ID_Warehouse=" + UserDataModel.getInstance().getWarehouse().getId() + ";";
     }
 
     protected void searchOrders(String name, String filter) {
@@ -186,7 +184,7 @@ public class ReleaseLogic {
             }
             for (var item : incompleteOrdersData) {
                 result = SSQLController.Query("SELECT sum(Count) AS allCount FROM availability\n" +
-                        "WHERE (ID_Warehouse=" + wh_id + " AND ID_Product=" + Math.round(item.getOrder().getPrice()) + ")");
+                                              "WHERE (ID_Warehouse=" + wh_id + " AND ID_Product=" + Math.round(item.getOrder().getPrice()) + ")");
                 if (result.next()) {
                     item.setAllCount(result.getDouble("allCount"));
                     //заполнение willRemain

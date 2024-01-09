@@ -17,7 +17,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.ZoneId;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -42,12 +41,12 @@ public class ReportsLogic {
 
         try {
             var result = SSQLController.Query("SELECT p.Name, sum(-al.Count) sold FROM availability_link al\n" +
-                    "JOIN document d ON d.ID_Document=al.ID_Document\n" +
-                    "\tAND d.Date BETWEEN '" + Document.getFormattedDate(dateStart) + "' AND '" + Document.getFormattedDate(dateEnd) + "'\n" +
-                    "    AND al.Count<0\n" +
-                    "JOIN availability a ON al.ID_Availability=a.ID_Availability\n" +
-                    "JOIN product p ON p.ID_Product=a.ID_Product\n" +
-                    "GROUP BY p.Name;");
+                                              "JOIN document d ON d.ID_Document=al.ID_Document\n" +
+                                              "\tAND d.Date BETWEEN '" + Document.getFormattedDate(dateStart) + "' AND '" + Document.getFormattedDate(dateEnd) + "'\n" +
+                                              "    AND al.Count<0\n" +
+                                              "JOIN availability a ON al.ID_Availability=a.ID_Availability\n" +
+                                              "JOIN product p ON p.ID_Product=a.ID_Product\n" +
+                                              "GROUP BY p.Name;");
             while (result.next()) {
                 set1.getData().add(new XYChart.Data<>(
                         result.getString("Name"),
@@ -70,12 +69,12 @@ public class ReportsLogic {
 
         try {
             var result = SSQLController.Query("SELECT p.Name, sum(" + sign + "al.Count * a.Price) money FROM availability_link al\n" +
-                    "JOIN document d ON d.ID_Document=al.ID_Document\n" +
-                    "\tAND d.Date BETWEEN '" + Document.getFormattedDate(dateStart) + "' AND '" + Document.getFormattedDate(dateEnd) + "'\n" +
-                    "    AND al.Count" + signCheck + "\n" +
-                    "JOIN availability a ON al.ID_Availability=a.ID_Availability\n" +
-                    "JOIN product p ON p.ID_Product=a.ID_Product\n" +
-                    "GROUP BY p.Name;");
+                                              "JOIN document d ON d.ID_Document=al.ID_Document\n" +
+                                              "\tAND d.Date BETWEEN '" + Document.getFormattedDate(dateStart) + "' AND '" + Document.getFormattedDate(dateEnd) + "'\n" +
+                                              "    AND al.Count" + signCheck + "\n" +
+                                              "JOIN availability a ON al.ID_Availability=a.ID_Availability\n" +
+                                              "JOIN product p ON p.ID_Product=a.ID_Product\n" +
+                                              "GROUP BY p.Name;");
             while (result.next()) {
                 list.add(new PieChart.Data(
                         result.getString("Name"),
@@ -110,18 +109,18 @@ public class ReportsLogic {
         for (var avail : availabilities) {
             try {
                 ResultSet result = SSQLController.Query("SELECT SUM(al.Count) sm FROM availability_link al\n" +
-                        "JOIN document d ON al.ID_Document = d.ID_Document\n" +
-                        "WHERE al.ID_Availability = " + avail.getId() + " AND d.Date between '" + Document.getFormattedDate(dateStart) + "' AND '" + Document.getFormattedDate(LocalDate.now()) + "';");
+                                                        "JOIN document d ON al.ID_Document = d.ID_Document\n" +
+                                                        "WHERE al.ID_Availability = " + avail.getId() + " AND d.Date between '" + Document.getFormattedDate(dateStart) + "' AND '" + Document.getFormattedDate(LocalDate.now()) + "';");
                 result.next();
                 beginning.add(avail.getCount() - result.getDouble("sm"));
                 result = SSQLController.Query("SELECT SUM(al.Count) sm FROM availability_link al\n" +
-                        "JOIN document d ON al.ID_Document = d.ID_Document\n" +
-                        "WHERE al.ID_Availability = " + avail.getId() + " AND al.Count>0 AND d.Date between '" + Document.getFormattedDate(dateStart) + "' AND '" + Document.getFormattedDate(dateEnd) + "';");
+                                              "JOIN document d ON al.ID_Document = d.ID_Document\n" +
+                                              "WHERE al.ID_Availability = " + avail.getId() + " AND al.Count>0 AND d.Date between '" + Document.getFormattedDate(dateStart) + "' AND '" + Document.getFormattedDate(dateEnd) + "';");
                 result.next();
                 coming.add(result.getDouble("sm"));
                 result = SSQLController.Query("SELECT SUM(al.Count) sm FROM availability_link al\n" +
-                        "JOIN document d ON al.ID_Document = d.ID_Document\n" +
-                        "WHERE al.ID_Availability = " + avail.getId() + " AND al.Count<0 AND d.Date between '" + Document.getFormattedDate(dateStart) + "' AND '" + Document.getFormattedDate(dateEnd) + "';");
+                                              "JOIN document d ON al.ID_Document = d.ID_Document\n" +
+                                              "WHERE al.ID_Availability = " + avail.getId() + " AND al.Count<0 AND d.Date between '" + Document.getFormattedDate(dateStart) + "' AND '" + Document.getFormattedDate(dateEnd) + "';");
                 result.next();
                 expenditure.add(-result.getDouble("sm"));
             } catch (SQLException e) {

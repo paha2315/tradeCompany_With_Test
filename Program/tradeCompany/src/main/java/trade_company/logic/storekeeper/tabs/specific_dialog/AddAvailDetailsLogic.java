@@ -1,8 +1,6 @@
 package trade_company.logic.storekeeper.tabs.specific_dialog;
 
-import trade_company.logic.sql_object.Product;
 import trade_company.models.DialogDataModel;
-import trade_company.models.UserDataModel;
 
 public class AddAvailDetailsLogic {
     public AddAvailDetailsLogic() {

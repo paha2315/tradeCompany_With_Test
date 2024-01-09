@@ -10,13 +10,28 @@ import trade_company.views.options.SupplierMenuOptions;
 import java.io.IOException;
 
 public class ViewFactory {
+    private final SimpleObjectProperty<StorekeeperMenuOptions> storekeeperSelectedMenuItem;
+    private final SimpleObjectProperty<AdministratorMenuOptions> administratorSelectedMenuItem;
+    private final SimpleObjectProperty<SupplierMenuOptions> supplierSelectedMenuItem;
+    private AnchorPane dummyViewInstance;
+
+    /* ========== STOREKEEPER SECTION ========== */
+    private AnchorPane storekeeperActionOrdersViewInstance;
+    private AnchorPane storekeeperActionAvailabilityViewInstance;
+    private AnchorPane storekeeperProfileViewInstance;
+    private AnchorPane storekeeperReportsViewInstance;
+    private AnchorPane administratorNewPersonViewInstance;
+    private AnchorPane administratorProfileViewInstance;
+    private AnchorPane administratorUserListViewInstance;
+    private AnchorPane supplierCompanyViewInstance;
+    private AnchorPane supplierOrdersViewInstance;
+    private AnchorPane supplierProfileViewInstance;
+
     public ViewFactory() {
         this.storekeeperSelectedMenuItem = new SimpleObjectProperty<>(StorekeeperMenuOptions.DUMMY);
         this.administratorSelectedMenuItem = new SimpleObjectProperty<>(AdministratorMenuOptions.DUMMY);
         this.supplierSelectedMenuItem = new SimpleObjectProperty<>(SupplierMenuOptions.DUMMY);
     }
-
-    private AnchorPane dummyViewInstance;
 
     public AnchorPane getDummyView() {
         if (dummyViewInstance == null) {
@@ -32,14 +47,6 @@ public class ViewFactory {
     public SimpleObjectProperty<StorekeeperMenuOptions> getStorekeeperSelectedMenuItem() {
         return storekeeperSelectedMenuItem;
     }
-
-    /* ========== STOREKEEPER SECTION ========== */
-
-    private final SimpleObjectProperty<StorekeeperMenuOptions> storekeeperSelectedMenuItem;
-    private AnchorPane storekeeperActionOrdersViewInstance;
-    private AnchorPane storekeeperActionAvailabilityViewInstance;
-    private AnchorPane storekeeperProfileViewInstance;
-    private AnchorPane storekeeperReportsViewInstance;
 
     public AnchorPane getStorekeeperActionOrdersView() {
         if (storekeeperActionOrdersViewInstance == null) {
@@ -68,6 +75,8 @@ public class ViewFactory {
         }
         return storekeeperActionAvailabilityViewInstance;
     }
+
+    /* ADMINISTRATOR SECTION */
 
     public void resetStorekeeperActionAvailabilityView() {
         storekeeperActionAvailabilityViewInstance = null;
@@ -125,12 +134,7 @@ public class ViewFactory {
         administratorNewPersonViewInstance = null;
     }
 
-    /* ADMINISTRATOR SECTION */
-
-    private final SimpleObjectProperty<AdministratorMenuOptions> administratorSelectedMenuItem;
-    private AnchorPane administratorNewPersonViewInstance;
-    private AnchorPane administratorProfileViewInstance;
-    private AnchorPane administratorUserListViewInstance;
+    /* SUPPLIER SECTION */
 
     public AnchorPane getAdministratorProfileView() {
         if (administratorProfileViewInstance == null) {
@@ -163,13 +167,6 @@ public class ViewFactory {
     public void resetAdministratorUserListView() {
         administratorUserListViewInstance = null;
     }
-
-    /* SUPPLIER SECTION */
-
-    private final SimpleObjectProperty<SupplierMenuOptions> supplierSelectedMenuItem;
-    private AnchorPane supplierCompanyViewInstance;
-    private AnchorPane supplierOrdersViewInstance;
-    private AnchorPane supplierProfileViewInstance;
 
     public SimpleObjectProperty<SupplierMenuOptions> getSupplierSelectedMenuItem() {
         return supplierSelectedMenuItem;

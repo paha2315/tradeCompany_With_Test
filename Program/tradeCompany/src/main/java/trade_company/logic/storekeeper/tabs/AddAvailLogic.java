@@ -24,12 +24,11 @@ import java.util.Set;
 import static trade_company.report.reportClass.requestSaveFolderFromUser;
 
 public class AddAvailLogic {
+    protected final String ALL_CITIES = "Все заказчики";
     protected ObservableList<Order> incomingOrderData;
     protected ObservableList<Availability> toAcceptAvailabilityData;
     protected ArrayList<Order> toAcceptOrderData;
     protected ArrayList<String> comboboxCityData;
-
-    protected final String ALL_CITIES = "Все заказчики";
 
     public AddAvailLogic() {
         incomingOrderData = FXCollections.observableArrayList();
@@ -56,15 +55,15 @@ public class AddAvailLogic {
         String filterBySelectedOrders = sb.toString();
         if (!filterBySelectedOrders.isEmpty()) {
             filterBySelectedOrders = "o.ID_Order NOT IN ("
-                    + filterBySelectedOrders.substring(0, filterBySelectedOrders.length() - 1) + ") AND ";
+                                     + filterBySelectedOrders.substring(0, filterBySelectedOrders.length() - 1) + ") AND ";
         }
 
         String filterBySupplierCity = city.equals(ALL_CITIES) ? "" : " AND s.City='" + city + "'";
         return "SELECT * FROM orders o"
-                + " JOIN supplier s ON (o.ID_Supplier = s.ID_Supplier" + filterBySupplierCity + ")"
-                + " JOIN product p ON (" + filterBySelectedOrders + " p.ID_Product = s.ID_Product)"
-                + " WHERE p.Article like '%" + filter + "%' AND o.ID_Document is Null AND Completed IN (1, 4)"
-                + " AND ID_Warehouse=" + UserDataModel.getInstance().getWarehouse().getId() + ";";
+               + " JOIN supplier s ON (o.ID_Supplier = s.ID_Supplier" + filterBySupplierCity + ")"
+               + " JOIN product p ON (" + filterBySelectedOrders + " p.ID_Product = s.ID_Product)"
+               + " WHERE p.Article like '%" + filter + "%' AND o.ID_Document is Null AND Completed IN (1, 4)"
+               + " AND ID_Warehouse=" + UserDataModel.getInstance().getWarehouse().getId() + ";";
     }
 
     private void initComboBoxCity() {
@@ -72,7 +71,7 @@ public class AddAvailLogic {
         comboboxCityData.add(ALL_CITIES);
         try {
             ResultSet result = SSQLController.Query("SELECT DISTINCT s.City FROM supplier s"
-                    +" JOIN orders o ON o.ID_Supplier=s.ID_Supplier;");
+                                                    + " JOIN orders o ON o.ID_Supplier=s.ID_Supplier;");
             while (result.next()) {
                 comboboxCityData.add(result.getString("City"));
             }

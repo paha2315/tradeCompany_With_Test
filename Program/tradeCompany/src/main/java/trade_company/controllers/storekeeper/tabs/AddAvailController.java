@@ -8,9 +8,12 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
-import trade_company.logic.sql_object.*;
+import trade_company.logic.sql_object.Availability;
+import trade_company.logic.sql_object.Availability_link;
 import trade_company.logic.sql_object.Containers.AvailabilityContainer;
 import trade_company.logic.sql_object.Containers.SupplierContainer;
+import trade_company.logic.sql_object.Document;
+import trade_company.logic.sql_object.Order;
 import trade_company.logic.storekeeper.tabs.AddAvailLogic;
 import trade_company.models.DialogDataModel;
 import trade_company.models.Model;
@@ -60,6 +63,10 @@ public class AddAvailController extends AddAvailLogic {
     @FXML
     private Button button_acceptGoods;
 
+    private static int hashSectionAndStack(int section, int stack) {
+        return section * 2000083 + stack;
+    }
+
     @FXML
     void initialize() {
         combobox_supplierCity.setItems(FXCollections.observableArrayList(comboboxCityData));
@@ -72,10 +79,6 @@ public class AddAvailController extends AddAvailLogic {
 
     private void setupListeners() {
         button_acceptGoods.setOnAction(this::acceptGoodsCommit);
-    }
-
-    private static int hashSectionAndStack(int section, int stack) {
-        return section * 2000083 + stack;
     }
 
     @FXML
@@ -120,7 +123,7 @@ public class AddAvailController extends AddAvailLogic {
             try {
                 Availability avail = toAcceptAvailabilityData.get(i);
                 ResultSet result = SSQLController.Query("SELECT ID_Availability FROM availability " +
-                        "WHERE ID_Product=" + toAcceptAvailabilityData.get(i).getProduct().getId() + " AND ID_Warehouse=" + toAcceptAvailabilityData.get(i).getWarehouse().getId() + " AND Price=" + toAcceptAvailabilityData.get(i).getPrice());
+                                                        "WHERE ID_Product=" + toAcceptAvailabilityData.get(i).getProduct().getId() + " AND ID_Warehouse=" + toAcceptAvailabilityData.get(i).getWarehouse().getId() + " AND Price=" + toAcceptAvailabilityData.get(i).getPrice());
                 if (result.next()) {
                     var trueAvailability = AvailabilityContainer.get(result.getInt("ID_Availability"));
                     trueAvailability.setCount(trueAvailability.getCount() + toAcceptAvailabilityData.get(i).getCount());

@@ -8,13 +8,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 public class Document extends DBObject {
 
+    private static final DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
     Date date;
 
     public Document() {
@@ -30,10 +30,13 @@ public class Document extends DBObject {
         setDate(date);
     }
 
+    public static String getFormattedDate(LocalDate date) {
+        return date.format(dtf);
+    }
+
     public Date getDate() {
         return date;
     }
-
 
     public void setDate(Date date) {
         this.date = date;
@@ -59,8 +62,8 @@ public class Document extends DBObject {
         DateFormat formatter = new SimpleDateFormat("yyyy.MM.dd");
         String sqlDate = formatter.format(date);
         return "UPDATE document SET " +
-                "Date = '" + sqlDate + "' " +
-                "WHERE ID_Document = " + getId() + ";";
+               "Date = '" + sqlDate + "' " +
+               "WHERE ID_Document = " + getId() + ";";
     }
 
     @Override
@@ -68,18 +71,12 @@ public class Document extends DBObject {
         DateFormat formatter = new SimpleDateFormat("yyyy.MM.dd");
         String sqlDate = formatter.format(date);
         return "INSERT INTO document VALUES " +
-                "(NULL, '" + sqlDate + "');";
+               "(NULL, '" + sqlDate + "');";
     }
 
     @Override
     protected String getSQLDelete() {
         return "DELETE FROM document " +
-                "WHERE ID_Document = " + getId() + ";";
-    }
-
-
-    private static final DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-    public static String getFormattedDate(LocalDate date) {
-        return date.format(dtf);
+               "WHERE ID_Document = " + getId() + ";";
     }
 }

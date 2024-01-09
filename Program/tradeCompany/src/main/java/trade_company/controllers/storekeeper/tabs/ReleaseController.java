@@ -7,13 +7,15 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
-import trade_company.logic.sql_object.*;
+import trade_company.logic.sql_object.Availability;
 import trade_company.logic.sql_object.Containers.ProductContainer;
+import trade_company.logic.sql_object.Order;
 import trade_company.logic.storekeeper.tabs.ReleaseLogic;
 import trade_company.models.Model;
 import trade_company.views.fictive_table_objects.StorekeeperIncompleteOrder;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class ReleaseController extends ReleaseLogic {
     @FXML

@@ -142,31 +142,31 @@ public class Product extends DBObject {
     @Override
     public String getSQLUpdate() {
         return "UPDATE product SET "
-                + "Name='" + name + "', "
-                + "Description='" + description + "', "
-                + "Nomenclature='" + nomenclature + "', "
-                + "Article='" + article + "', "
-                + "ID_OKEI=" + okei.getId() + ", "
-                + "Mass=" + mass + ", "
-                + "PercentNDS=" + percentNDS + ", "
-                + "StorageConditions='" + storageConditions + "', "
-                + "Deleted=" + deleted + " "
-                + "WHERE ID_Product=" + getId() + ";";
+               + "Name='" + name + "', "
+               + "Description='" + description + "', "
+               + "Nomenclature='" + nomenclature + "', "
+               + "Article='" + article + "', "
+               + "ID_OKEI=" + okei.getId() + ", "
+               + "Mass=" + mass + ", "
+               + "PercentNDS=" + percentNDS + ", "
+               + "StorageConditions='" + storageConditions + "', "
+               + "Deleted=" + deleted + " "
+               + "WHERE ID_Product=" + getId() + ";";
     }
 
     @Override
     public String getSQLInsert() {
         return "INSERT INTO product VALUES ("
-                + "Null, "
-                + "'" + name + "', "
-                + "'" + description + "', "
-                + "'" + nomenclature + "', "
-                + "'" + article + "', "
-                + okei.getId() + ", "
-                + mass + ", "
-                + percentNDS + ", "
-                + "'" + storageConditions + "', "
-                + deleted + ");";
+               + "Null, "
+               + "'" + name + "', "
+               + "'" + description + "', "
+               + "'" + nomenclature + "', "
+               + "'" + article + "', "
+               + okei.getId() + ", "
+               + mass + ", "
+               + percentNDS + ", "
+               + "'" + storageConditions + "', "
+               + deleted + ");";
     }
 
     @Override

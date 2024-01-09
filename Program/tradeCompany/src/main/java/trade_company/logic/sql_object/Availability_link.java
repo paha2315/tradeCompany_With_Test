@@ -29,10 +29,6 @@ public class Availability_link extends DBObject {
         setCount(count);
     }
 
-    private void setAvailability(int idAvailability) {
-        setAvailability(AvailabilityContainer.get(idAvailability));
-    }
-
     public Document getDocument() {
         return document;
     }
@@ -54,6 +50,10 @@ public class Availability_link extends DBObject {
 
     public Availability getAvailability() {
         return availability;
+    }
+
+    private void setAvailability(int idAvailability) {
+        setAvailability(AvailabilityContainer.get(idAvailability));
     }
 
     public void setAvailability(Availability availability) {

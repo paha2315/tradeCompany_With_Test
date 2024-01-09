@@ -5,7 +5,6 @@ import trade_company.logic.sql_object.Document;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Map;

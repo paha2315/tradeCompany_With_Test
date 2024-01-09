@@ -12,12 +12,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class OrderProductLogic {
+    public final String ALL_CITIES = "Все города";
     public ObservableList<Supplier> suppliers = FXCollections.observableArrayList();
     public ObservableList<Order> orders = FXCollections.observableArrayList();
-
     public ArrayList<String> citys = new ArrayList<>();
-
-    private final String ALL_CITIES = "Все города";
 
     public void initSuppliers() {
         SupplierContainer.setAll();
@@ -29,8 +27,8 @@ public class OrderProductLogic {
         String filterBySupplierCity = city.equals(ALL_CITIES) ? "" : " AND s.City='" + city + "'";
 
         return "SELECT ID_Supplier FROM supplier s " +
-                "JOIN product p ON s.ID_Product = p.ID_Product " +
-                "WHERE p.Article LIKE '%" + filter + "%' " + filterBySupplierCity;
+               "JOIN product p ON s.ID_Product = p.ID_Product " +
+               "WHERE p.Article LIKE '%" + filter + "%' " + filterBySupplierCity;
     }
 
     public void initComboBoxCity() {

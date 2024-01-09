@@ -41,12 +41,6 @@ public class Order extends DBObject {
         return document;
     }
 
-    public String getDocumentID() {
-        if (document == null)
-            return null;
-        return String.valueOf(getDocument().getId());
-    }
-
     public void setDocument(Integer id) {
         if (id == null) setDocument((Document) null);
         else setDocument(DocumentContainer.get(id));
@@ -54,6 +48,12 @@ public class Order extends DBObject {
 
     public void setDocument(Document document) {
         this.document = document;
+    }
+
+    public String getDocumentID() {
+        if (document == null)
+            return null;
+        return String.valueOf(getDocument().getId());
     }
 
     public Supplier getSupplier() {

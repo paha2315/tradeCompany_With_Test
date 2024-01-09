@@ -44,14 +44,17 @@ public class SuppliesController extends SuppliesLogic {
         var commonAlertTitle = "Предложение товара";
         var windowFactory = Model.getInstance().getWindowFactory();
         switch (result) {
-            case WAREHOUSE_INCOMPLETE -> windowFactory.showAlert(Alert.AlertType.WARNING, commonAlertTitle, "", "Не выбран склад.");
-            case FIELDS_INCOMPLETE -> windowFactory.showAlert(Alert.AlertType.WARNING, commonAlertTitle, "", "Не заполнены поля.");
-            case FIELDS_STR_TO_NUMBER_CONVERT_EXCEPTION -> windowFactory.showAlert(Alert.AlertType.WARNING, commonAlertTitle, "", "Ошибка заполнения полей.");
+            case WAREHOUSE_INCOMPLETE ->
+                    windowFactory.showAlert(Alert.AlertType.WARNING, commonAlertTitle, "", "Не выбран склад.");
+            case FIELDS_INCOMPLETE ->
+                    windowFactory.showAlert(Alert.AlertType.WARNING, commonAlertTitle, "", "Не заполнены поля.");
+            case FIELDS_STR_TO_NUMBER_CONVERT_EXCEPTION ->
+                    windowFactory.showAlert(Alert.AlertType.WARNING, commonAlertTitle, "", "Ошибка заполнения полей.");
             case SQL_EXCEPTION -> windowFactory.showAlert(Alert.AlertType.ERROR, commonAlertTitle, "", "Ошибка MySQL.");
             case OK -> {
                 var productName = UserDataModel.getInstance().getPerson().getSupplier().getProduct().getName();
                 var warehouseName = UserDataModel.getInstance().getWarehouse().getName();
-                windowFactory.showAlert(Alert.AlertType.INFORMATION, commonAlertTitle, "", "Товар '" + productName  + "' предложен складу '" + warehouseName + "' в количестве " + textfield_count.getText() + " единиц.");
+                windowFactory.showAlert(Alert.AlertType.INFORMATION, commonAlertTitle, "", "Товар '" + productName + "' предложен складу '" + warehouseName + "' в количестве " + textfield_count.getText() + " единиц.");
                 return true;
             }
         }

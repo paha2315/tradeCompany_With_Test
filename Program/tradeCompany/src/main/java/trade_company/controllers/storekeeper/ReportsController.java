@@ -106,6 +106,6 @@ public class ReportsController extends ReportsLogic {
 
         NumberFormat formatter = new DecimalFormat("###,###.##");
         text_money.setText("Всего " + (got ? "получено" : "потрачено") + " денег за отчётный период: "
-                + formatter.format(money) + "руб");
+                           + formatter.format(money) + "руб");
     }
 }
